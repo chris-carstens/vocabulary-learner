@@ -8,7 +8,7 @@ LANGUAGE = 'italian'
 TOPICS = ['computer science and artificial intelligence', 'house', 'animals', 'food']
 N_WORDS = 5
 SCHEDULED_TIME_HOUR = 9
-SCHEDULED_TIME_MINUTE = 00
+SCHEDULED_TIME_MINUTE = 0
 TIMEZONE = pytz.timezone("UTC")
 
 app = FastAPI()
