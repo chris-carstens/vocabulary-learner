@@ -13,6 +13,7 @@ def load_words_sent():
             return json.load(f)
     return {}
 
+
 def save_words_sent(data):
     with open(WORDS_SENT_FILE, 'w') as f:
         json.dump(data, f)
@@ -26,12 +27,10 @@ async def send_words(language, topics, n):
         sent_words_topic.extend([word.split(':')[0].strip() for word in words])
         save_words_sent(sent_words)
 
-        # Format the message with a nice style and context
         messages = [f"📚 {language.capitalize()} Vocabulary - Topic: {topic.capitalize()}"]
         for word in words:
             italian, english = word.split(': ')
             messages.append(f"🔹 {italian.strip()} - {english.strip()}")
         text = '\n'.join(messages)
 
-        # Send the formatted message
         await telegram_client.send_message(text)

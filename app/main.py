@@ -2,19 +2,20 @@ from fastapi import FastAPI, Request
 from apscheduler.schedulers.background import BackgroundScheduler
 from app.utils.word_utils import send_words
 import pytz
+import asyncio
 
 LANGUAGE = 'italian'
 TOPICS = ['computer science and artificial intelligence', 'house', 'animals', 'food']
 N_WORDS = 5
 SCHEDULED_TIME_HOUR = 9
-SCHEDULED_TIME_MINUTE = 0
+SCHEDULED_TIME_MINUTE = 00
 TIMEZONE = pytz.timezone("UTC")
 
 app = FastAPI()
 scheduler = BackgroundScheduler()
 
 def scheduled_job():
-    send_words(LANGUAGE, TOPICS, N_WORDS)
+    asyncio.run(send_words(LANGUAGE, TOPICS, N_WORDS))
 
 @app.on_event("startup")
 def start_scheduler():
