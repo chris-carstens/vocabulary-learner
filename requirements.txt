@@ -1,0 +1,7 @@
+fastapi
+apscheduler
+python-telegram-bot
+requests
+uvicorn
+google-generativeai
+pytz
